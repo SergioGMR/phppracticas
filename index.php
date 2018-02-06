@@ -1,7 +1,7 @@
 <?php require_once 'includes/extras.php' ?>
 <?php require_once 'routes.php' ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 
     <meta charset="utf-8">
@@ -57,7 +57,7 @@
 					include '404.php';
 				}
 			} else {
-				include "sections/about.php";
+				include "sections/info.php";
 			}
 		} catch (Exception $exception) {
 

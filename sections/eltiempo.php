@@ -35,34 +35,33 @@
     </div>
 </section>
 <script>
-    function getIp() {
-        return $.getJSON('https://extreme-ip-lookup.com/json', function (data) {
-            return data;
+    $(document).ready(function () {
+        function getIp() {
+            return $.getJSON('https://extreme-ip-lookup.com/json');
+        }
+
+        $.when(getIp()).done(function (response) {
+            (function () {
+                var url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBgKz2F98ZXivyuk1PZe1C10JXqHKO1Tbg';
+                $.getJSON(url)
+            }).done(function () {
+                $("#map").css("width", "70vw");
+                $("#map").css("height", "37vh");
+                var ciudad = {lat: response.lat, lng: response.lon};
+                var mapOptions = {
+                    zoom: 13,
+                    minZoom: 10,
+                    maxZoom: 18,
+                    center: ciudad,
+                    mapTypeId: 'hybrid'
+                };
+                var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: ciudad,
+                    map: map
+                });
+            }
         });
-    }
+    });
 
-    var resultado = getIp();
-
-    var latitud = Number(resultado.lat);
-    var longitud = Number(resultado.lon);
-
-    function initMap() {
-        $("#map").css("width", "70vw");
-        $("#map").css("height", "37vh");
-        var ciudad = {lat: latitud, lng: longitud};
-        var mapOptions = {
-            zoom: 13,
-            minZoom: 10,
-            maxZoom: 18,
-            center: ciudad,
-            mapTypeId: 'hybrid'
-        };
-        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        var marker = new google.maps.Marker({
-            position: ciudad,
-            map: map
-        });
-    }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgKz2F98ZXivyuk1PZe1C10JXqHKO1Tbg&callback=initMap"
-        async defer></script>
