@@ -2,7 +2,7 @@
 	
 	class Movies {
 		protected $base_url = 'https://api.themoviedb.org/3/';
-		protected $key = 'YOU_API_KEY-THEMOVIEDBORG';
+		protected $key = 'APIKEY-MOVIES';
 		protected $img_url = 'http://image.tmdb.org/t/p/';
 		protected $idioma = '&language=es-ES';
 		protected $adult = '&include_adult=false';

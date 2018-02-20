@@ -1,5 +1,5 @@
 <?php
-	$key = 'YOUR_API_KEY-OPENWEATHERMAP';
+	$key = 'APIKEY-WEATHER';
 
 	//$lat = '28.09520';
 	//$lon = '-15.41678';

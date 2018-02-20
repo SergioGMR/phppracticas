@@ -80,5 +80,5 @@
         });
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgKz2F98ZXivyuk1PZe1C10JXqHKO1Tbg&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=APIKEY-GOOGLEMAPS&callback=initMap"
         async defer></script>

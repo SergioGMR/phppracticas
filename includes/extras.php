@@ -105,6 +105,41 @@
 		fclose($file);
 	}
 	
+	function generaAssocDesdeDesordenado($rutaFichero) {
+		if (!file_exists($rutaFichero)) {
+			echo "Fichero no encontrado $rutaFichero";
+			die();
+		}
+		$assoc = [];
+		
+		$fich_desc = fopen($rutaFichero, 'r');
+		$registro = fgets($fich_desc); // lectura del primero
+		
+		while (!feof($fich_desc)) {
+			$campo = explode("#", $registro);
+			
+			if (isset($assoc[ $campo[0] ])) {
+				array_push($assoc[ $campo[0] ], $campo[1]);
+			} else {
+				$assoc[ $campo[0] ] = [];
+				array_push($assoc[ $campo[0] ], $campo[1]);
+			}
+			
+			$registro = fgets($fich_desc);
+			
+		}
+		
+		$campo = explode("#", $registro);
+		if (isset($assoc[ $campo[0] ])) {
+			array_push($assoc[ $campo[0] ], $campo[1]);
+		} else {
+			$assoc[ $campo[0] ] = [];
+			array_push($assoc[ $campo[0] ], $campo[1]);
+		}
+		fclose($fich_desc);
+		return $assoc;
+	}
+	
 	function leerOrdenadoC1($rutaFichero) {
 		// abrir el fichero
 		$fich_desc = fopen($rutaFichero, 'r');
